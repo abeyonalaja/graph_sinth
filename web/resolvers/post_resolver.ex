@@ -6,4 +6,11 @@ defmodule GraphSinth.PostResolver do
     {:ok, Repo.all(Post)}
   end
 
+  def create(args, _info) do
+    %Post{}
+    |> Post.changeset(args)
+    |> Repo.insert 
+  end
+
+
 end

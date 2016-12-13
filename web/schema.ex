@@ -18,4 +18,15 @@ defmodule GraphSinth.Schema do
     end
 
   end
+
+  mutation do
+    field :create_post, type: :post do
+      arg :title, non_null(:string)
+      arg :body, non_null(:string)
+      arg :user_id, non_null(:integer)
+
+      resolve &GraphSinth.PostResolver.create/2
+    end
+  end
+
 end

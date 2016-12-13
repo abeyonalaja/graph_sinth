@@ -3,9 +3,9 @@ defmodule GraphSinth.Schema.Types do
   use Absinthe.Ecto, repo: GraphSinth.Repo
 
   object :user do
-    field :id, id
+    field :id, :id
     field :name, :string
-    field :emai, :string
+    field :email, :string
     field :posts, list_of(:post), resolve: assoc(:posts)
   end
 
