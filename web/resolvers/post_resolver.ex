@@ -12,5 +12,10 @@ defmodule GraphSinth.PostResolver do
     |> Repo.insert 
   end
 
+  def update(%{id: id, post: post_params}) do
+    Repo.get!(Post,id)
+    |> Post.changeset(post_params)
+    |> Repo.update
+  end
 
 end

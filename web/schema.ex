@@ -19,7 +19,14 @@ defmodule GraphSinth.Schema do
 
   end
 
+  input_object :update_post_params do
+    field :title,   non_null(:string)
+    field :body,    non_null(:string)
+    field :user_id, non_null(:integer)
+  end
+
   mutation do
+
     field :create_post, type: :post do
       arg :title, non_null(:string)
       arg :body, non_null(:string)
@@ -27,6 +34,14 @@ defmodule GraphSinth.Schema do
 
       resolve &GraphSinth.PostResolver.create/2
     end
+
+    field :update_post, type: :post do
+      arg :id, non_null(:integer)
+      ard :post, :update_post_params
+
+      resolve &GraphSinth.PostResolver.update/2
+    end
+
   end
 
 end
