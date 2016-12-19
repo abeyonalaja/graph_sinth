@@ -37,9 +37,15 @@ defmodule GraphSinth.Schema do
 
     field :update_post, type: :post do
       arg :id, non_null(:integer)
-      ard :post, :update_post_params
+      arg :post, :update_post_params
 
       resolve &GraphSinth.PostResolver.update/2
+    end
+
+    field :delete_post, type: :post do
+      arg :id, non_null(:integer)
+
+      resolve &GraphSinth.PostResolver.delete/2
     end
 
   end
